@@ -160,8 +160,27 @@
 
 ---
 
-## Fase 3 — Orçamentos e Preços
-_Ainda não iniciada_
+## Fase 3 — Orçamentos e Preços (Concluído em 12/04/2026)
+
+### Migrations
+- [x] `price_tables` (name, description, is_active, softDeletes)
+- [x] `price_table_items` (price_table_id, item_id, unit_price, notes; unique por par)
+- [x] `quotes` (number, client_id, price_table_id, user_id, status, valid_until, total, notes, rejection_reason, sent_at, approved_at, rejected_at, softDeletes)
+- [x] `quote_items` (quote_id, item_id, quantity, unit_price, subtotal como coluna computed `quantity * unit_price`)
+
+### Enum
+- [x] `QuoteStatus` (draft/sent/approved/rejected/expired) com métodos `label()` e `color()`
+
+### Models
+- [x] `PriceTable` (HasMany items/quotes, scopeActive)
+- [x] `PriceTableItem` (BelongsTo PriceTable/Item)
+- [x] `Quote` (BelongsTo Client/PriceTable/User, HasMany items, método `recalculateTotal()`, scopes)
+- [x] `QuoteItem` (BelongsTo Quote/Item, cast subtotal)
+
+### Resources Filament (Admin)
+- [x] `PriceTableResource` — CRUD tabelas de preços + `ItemsRelationManager` (item + preço, pré-preenchimento automático)
+- [x] `QuoteResource` — formulário completo, badge de status colorido, filtros por status/cliente; Actions: Enviar / Aprovar / Rejeitar (com motivo); `ItemsRelationManager` com pré-preenchimento de preço pela tabela vinculada e recalculate total automático
+- [x] Permissões Shield geradas: 156 permissões para 13 entidades
 
 ---
 

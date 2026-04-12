@@ -10,18 +10,7 @@
 
 ## Fase 2 — Dados Mestres ✅ Concluída em 12/04/2026
 
-## Fase 3 — Orçamentos e Preços
-
-- [ ] Migration: price_tables
-- [ ] Migration: price_table_items
-- [ ] Migration: quotes
-- [ ] Migration: quote_items
-- [ ] Models: PriceTable, PriceTableItem, Quote, QuoteItem
-- [ ] Enum: QuoteStatus (draft, sent, approved, rejected, expired)
-- [ ] PriceTableResource com RelationManager de itens/preços
-- [ ] QuoteResource com cálculo automático de totais
-- [ ] Actions no QuoteResource: enviar, aprovar, rejeitar
-- [ ] Testar: criar tabela de preço → criar orçamento → aprovar
+## Fase 3 — Orçamentos e Preços ✅ Concluída em 12/04/2026
 
 ## Fase 4 — Ordens de Serviço
 

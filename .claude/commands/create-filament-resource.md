@@ -28,5 +28,17 @@ Crie um Filament Resource para o projeto G-Lux seguindo as convenções:
 - Implemente form() e table() completos
 - Crie RelationManagers quando houver hasMany relevante
 - Adicione Actions customizadas no header ou na table
+- **OBRIGATÓRIO:** A página de listagem (`ListXxx extends ListRecords`) DEVE sempre ter o botão de criar:
+
+```php
+use Filament\Actions\CreateAction;
+
+protected function getHeaderActions(): array
+{
+    return [
+        CreateAction::make(),
+    ];
+}
+```
 
 $ARGUMENTS
