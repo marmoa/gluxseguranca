@@ -184,8 +184,30 @@
 
 ---
 
-## Fase 4 — Ordens de Serviço
-_Ainda não iniciada_
+## Fase 4 — Ordens de Serviço (Concluído em 12/04/2026)
+
+### Enum
+- [x] `ServiceOrderStatus` (Open/InProgress/Completed/Billed/Cancelled) com métodos `label()`, `color()`, `canTransitionTo()` para validar transições de estado
+
+### Migrations
+- [x] `service_order_numbers` (year, last_number, prefix; unique em year)
+- [x] `service_orders` (number, FKs: client_id, client_contract_id, quote_id, user_id, state_id, city_id; status, address, temperature, humidity, notes, scheduled_at, started_at, completed_at, billed_at; softDeletes; índices em status, client_id, user_id, scheduled_at)
+
+### Models
+- [x] `ServiceOrderNumber` (fillable: year, last_number, prefix; casts: year→int, last_number→int)
+- [x] `ServiceOrder` (fillable completo, casts para enum/datas/decimais, 6 BelongsTo relations, 4 scopes, helper `isEditable()`)
+
+### Services
+- [x] `ServiceOrderNumberService::generate()` — gera número sequencial `OS-2026-0001` via `DB::transaction` + `lockForUpdate()` (thread-safe)
+- [x] `ServiceOrderLifecycleService` — métodos `start()`, `complete()`, `bill()`, `cancel()`, `reopen()` com validação via `canTransitionTo()`, DB::transaction por transição, side-effects de data (started_at, completed_at, billed_at)
+
+### Resources Filament
+- [x] **Admin** `ServiceOrderResource` — formulário completo (4 seções: Dados da OS, Local, Agenda, Observações), selects reativos (estado→cidade, cliente→contrato, cliente→orçamento), número gerado automaticamente via service; tabela com 5 actions inline de ciclo de vida (Iniciar/Concluir/Faturar/Reabrir/Cancelar) + Edit/Delete/Restore; navigate a grupo "Operações"
+- [x] **Campo** `ServiceOrderResource` — read-only; filtrado por `user_id` do técnico logado; actions: Iniciar (Open→InProgress) e Concluir (InProgress→Completed); infolist de detalhes; sem create/edit/delete
+- [x] **Comum** `ServiceOrderResource` — portal do cliente; read-only; filtrado por `client_id` do usuário logado; apenas visualização de OS; infolist de detalhes; sem ações de dados
+
+### Shield
+- [x] 168 permissões geradas para 14 entidades (adicionado ServiceOrderResource)
 
 ---
 

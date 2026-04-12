@@ -12,22 +12,7 @@
 
 ## Fase 3 — Orçamentos e Preços ✅ Concluída em 12/04/2026
 
-## Fase 4 — Ordens de Serviço
-
-- [ ] Migration: service_order_numbers
-- [ ] Migration: quote_numbers
-- [ ] Migration: service_orders (com quote_id)
-- [ ] Model: ServiceOrder (hub central, todos os relacionamentos)
-- [ ] Model: ServiceOrderNumber
-- [ ] Model: QuoteNumber
-- [ ] Enum: ServiceOrderStatus (open, in_progress, completed, billed, cancelled)
-- [ ] ServiceOrderNumberService
-- [ ] ServiceOrderLifecycleService (transições de status)
-- [ ] ServiceOrderResource (Admin) — formulário completo com selects reativos
-- [ ] ServiceOrderResource (Campo) — read-only com ações
-- [ ] ServiceOrderResource (Comum) — filtrado por client_id
-- [ ] Pages de listagem por status (ou tabs no Resource)
-- [ ] Testar: criar OS com orçamento vinculado, listar nos 3 painéis
+## Fase 4 — Ordens de Serviço ✅ Concluída em 12/04/2026
 
 ## Fase 5 — Operações de Campo
 
