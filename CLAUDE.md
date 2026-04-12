@@ -12,7 +12,7 @@ Reescrita completa de um sistema legado PHP procedural (6 anos em produção) pa
 - **Admin UI:** Filament 4.x (3 painéis: Admin `/admin`, Campo `/campo`, Comum `/comum`)
 - **Frontend:** Filament usa Tailwind CSS internamente. Para páginas customizadas fora do Filament, usar Bootstrap 5.x (NÃO usar Materialize)
 - **Banco:** MySQL 8+
-- **Pacotes principais:** spatie/laravel-permission, barryvdh/laravel-dompdf, spatie/laravel-activitylog, maatwebsite/excel, laravel-boost/mcp
+- **Pacotes principais:** spatie/laravel-permission, barryvdh/laravel-dompdf, spatie/laravel-activitylog, maatwebsite/excel, laravel/mcp, laravel/boost (dev)
 
 ## Convenções
 

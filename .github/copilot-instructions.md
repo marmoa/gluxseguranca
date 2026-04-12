@@ -12,7 +12,8 @@ Este é o projeto G-Lux, um sistema de gestão de serviços de calibração/ensa
 - spatie/laravel-permission para roles
 - barryvdh/laravel-dompdf para PDFs
 - spatie/laravel-activitylog para logs
-- laravel-boost/mcp para servidor MCP (Model Context Protocol) — expõe tools e resources para agentes de IA
+- laravel/mcp para servidor MCP (Model Context Protocol) — expõe tools e resources para agentes de IA
+- laravel/boost (dev) para acelerar desenvolvimento assistido por IA
 
 ## Convenções de Código
 
