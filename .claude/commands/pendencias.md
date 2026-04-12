@@ -124,7 +124,7 @@
 ## Fase 10 — MCP + Chatbot IA (Pós Go-Live)
 
 ### Servidor MCP (Model Context Protocol)
-- [ ] Instalar `laravel-boost/mcp`
+- [x] ~~Instalar `laravel/mcp` e `laravel/boost`~~ ✅ Concluído em 12/04/2026
 - [ ] Registrar MCP Tools: search_certificate, list_invoices, list_service_orders, get_service_summary, check_item_validity
 - [ ] Registrar MCP Tools (admin): create_quote, update_order_status, generate_report
 - [ ] Registrar MCP Resources: clients, items, standards, inspections/{code}

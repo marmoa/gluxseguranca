@@ -152,6 +152,11 @@
 ### Complementos
 - [x] Pacotes `laravel/mcp` (v0.6.5) e `laravel/boost` (v2.4.3) instalados
 - [x] Super admin criado: `superadmin@glux.com.br` / `Glux@2026!` (role: admin, must_change_password: false)
+- [x] `bezhansalleh/filament-shield` configurado no painel admin via `shield:install admin`
+- [x] 132 permissões geradas via `shield:generate --all --panel=admin` para 11 entidades
+- [x] Role `super_admin` atribuída ao super admin via `shield:super-admin`
+- [x] `User::canAccessPanel()` atualizado para aceitar roles `admin` e `super_admin` no painel admin
+- [x] `DatabaseSeeder` atualizado: executa `shield:generate` e `shield:super-admin` automaticamente no seed
 
 ---
 
