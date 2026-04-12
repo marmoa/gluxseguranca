@@ -10,9 +10,6 @@
 
 ## Fase 2 — Dados Mestres ✅ Concluída em 12/04/2026
 
-- [ ] `UserResource` (admin) com atribuição de roles — pendente (implementar junto com gestão de usuários)
-- [ ] Testar: criar padrão com template → criar item com atributos pré-selecionados
-
 ## Fase 3 — Orçamentos e Preços
 
 - [ ] Migration: price_tables

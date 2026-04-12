@@ -147,6 +147,11 @@
 - [x] `ItemResource` — formulário em 3 abas (Dados Básicos, Atributos, Normas); ao selecionar Padrão, pré-seleciona atributos do template via afterStateUpdated
 - [x] `ClientResource` — formulário completo (empresa, endereço com select estado→cidade reativo, responsável, dados adicionais); RelationManager de contratos
 - [x] `EquipmentResource` — CRUD equipamentos, destaque vermelho no vencimento de calibração, filtro "calibração vencida"
+- [x] `UserResource` — CRUD usuários com atribuição de roles (admin/campo/comum), select de cliente vinculado, toggle de status e troca de senha forçada
+
+### Complementos
+- [x] Pacotes `laravel/mcp` (v0.6.5) e `laravel/boost` (v2.4.3) instalados
+- [x] Super admin criado: `superadmin@glux.com.br` / `Glux@2026!` (role: admin, must_change_password: false)
 
 ---
 
