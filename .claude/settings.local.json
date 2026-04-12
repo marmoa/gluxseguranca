@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/laragon/www/**)",
+      "Bash(composer create-project:*)",
+      "Bash(composer require:*)",
+      "Bash(php artisan:*)",
+      "Bash(mysql -u root -e \"CREATE DATABASE IF NOT EXISTS gluxseguranca CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\")",
+      "Bash(mysql -u root -e \"DROP DATABASE IF EXISTS gluxseguranca; CREATE DATABASE gluxseguranca CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\")",
+      "Bash(cp -r /c/laragon/www/glux_hom/.claude/worktrees/priceless-chaum/docs /c/laragon/www/gluxseguranca/)",
+      "Bash(cp -r /c/laragon/www/glux_hom/.claude/worktrees/priceless-chaum/.claude /c/laragon/www/gluxseguranca/)"
+    ]
+  }
+}
