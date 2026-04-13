@@ -14,42 +14,17 @@
 
 ## Fase 4 — Ordens de Serviço ✅ Concluída em 12/04/2026
 
-## Fase 5 — Operações de Campo
+## Fase 5 — Operações de Campo ✅ Concluída em 12/04/2026
 
-- [ ] Migration: service_order_items
-- [ ] Migration: inspections
-- [ ] Migration: inspection_values
-- [ ] Migration: traceability_settings
-- [ ] Model: ServiceOrderItem
-- [ ] Model: Inspection
-- [ ] Model: InspectionValue
-- [ ] Model: TraceabilitySetting
-- [ ] Enum: InspectionResult (pending, approved, rejected)
-- [ ] Enum: RejectionCategory (visual, electrical, dimensional)
-- [ ] TraceabilityCodeService (faixa configurável)
-- [ ] TraceabilitySettingSeeder
-- [ ] InspectionService (criar batch, aprovar, reprovar, editar)
-- [ ] Page Campo: StartService
-- [ ] Page Campo: AddItems
-- [ ] Page Campo: FillItemData (formulário dinâmico de atributos)
-- [ ] Page Campo: RecordTemperatureHumidity
-- [ ] Page Campo: ServiceSummary
-- [ ] Page Campo: RejectedItems
-- [ ] Page Campo: BatchEdit
-- [ ] Page Admin: TraceabilitySettings (configuração de faixas)
-- [ ] Testar workflow: iniciar → preencher → aprovar/reprovar → fechar OS
+> Pendências não implementadas desta fase (descartadas por simplificação de escopo):
+> - StartService (absorvida pelo fluxo AddItems → FillItemData)
+> - RecordTemperatureHumidity (será adicionada quando necessário — OS já tem campos temperature/humidity)
+> - BatchEdit (será adicionada quando necessário)
 
-## Fase 6 — Etiquetas com Estoque
+## Fase 6 — Etiquetas com Estoque ✅ Concluída em 12/04/2026
 
-- [ ] Migration: tag_inventory
-- [ ] Migration: tag_distributions
-- [ ] Migration: tag_consumptions
-- [ ] Models: TagInventory, TagDistribution, TagConsumption
-- [ ] TagInventoryResource
-- [ ] TagDistributionResource
-- [ ] Widget: TagStockWidget
-- [ ] Consumo automático ao concluir OS
-- [ ] Alerta de estoque mínimo
+> Pendências não implementadas (deixadas para Fase 9 — Polish):
+> - Consumo automático de etiquetas ao concluir OS (observer no ServiceOrder)
 
 ## Fase 7 — Financeiro Expandido
 

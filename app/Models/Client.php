@@ -72,6 +72,14 @@ class Client extends Model
         return $this->trade_name ?? $this->company_name;
     }
 
+    /**
+     * Alias para exibição simples do nome do cliente (trade_name ?? company_name).
+     */
+    public function getNameAttribute(): string
+    {
+        return $this->trade_name ?? $this->company_name;
+    }
+
     public function scopeActive($query): mixed
     {
         return $query->where('is_active', true);

@@ -211,13 +211,76 @@
 
 ---
 
-## Fase 5 — Operações de Campo
-_Ainda não iniciada_
+## Fase 5 — Operações de Campo (Concluído em 12/04/2026)
+
+### Migrations
+- [x] `service_order_items` (service_order_id, item_id, quantity, notes; FK com cascade)
+- [x] `traceability_settings` (digit_count unique, range_start, range_end, last_used, label, is_active)
+- [x] `inspections` (service_order_id, service_order_item_id, item_id, traceability_code unique, digit_count, result enum, rejection_category, rejection_notes, expires_at, batch_sequence; softDeletes)
+- [x] `inspection_values` (inspection_id, attribute_id, text_value, attribute_value_id; unique em inspection+attribute)
+
+### Enums
+- [x] `InspectionResult` (pending/approved/rejected) — implements `HasLabel`, `HasColor` (Filament interfaces); métodos `getLabel()`, `getColor()`
+- [x] `RejectionCategory` (visual/electrical/dimensional/structural/other) — implements `HasLabel`; método `getLabel()`
+
+### Models
+- [x] `ServiceOrderItem` (BelongsTo ServiceOrder/Item, HasMany Inspection; helpers `approvedCount()`, `rejectedCount()`)
+- [x] `Inspection` (BelongsTo ServiceOrder/ServiceOrderItem/Item, HasMany InspectionValue; scopes: pending/approved/rejected/expiringSoon; helpers `isApproved()`, `isRejected()`)
+- [x] `InspectionValue` (BelongsTo Inspection/Attribute/AttributeValue)
+- [x] `TraceabilitySetting` (casts int, helpers `remainingCodes()`, `usagePercent()`, scopeActive)
+- [x] `Client` atualizado: accessor `getNameAttribute()` retorna trade_name ?? company_name
+
+### Services
+- [x] `TraceabilityCodeService` — `generate(int $digitCount)` e `generateBatch(int $digitCount, int $quantity)` via `DB::transaction + lockForUpdate()` (thread-safe); `isValid(string $code)`
+- [x] `InspectionService` — `createBatch()` bulk-insert N inspections + N×M values; `approve()` com data de expiração; `reject()` com categoria/notas; `updateValues()` via updateOrCreate; `getOrderSummary()` com totais por item
+
+### Seeders
+- [x] `TraceabilitySettingSeeder` — faixa 4 dígitos (1001–9999) + faixa 6 dígitos (100001–599999)
+- [x] Integrado ao `DatabaseSeeder`
+
+### Pages — Painel Campo
+- [x] `AddItems` — seleciona OS (open/in_progress) e item+quantidade; armazena em session `campo.items`; redireciona para FillItemData
+- [x] `FillItemData` (`$shouldRegisterNavigation=false`) — formulário dinâmico com resultado (aprovado/reprovado), campos de reprovação e atributos do item; chama `InspectionService::createBatch()`; redireciona para ServiceSummary ao concluir
+- [x] `ServiceSummary` — exibe totais aprovados/reprovados/pendentes por item; actions para fechar OS (muda status para Completed) ou adicionar mais itens
+- [x] `RejectedItems` — tabela de inspeções reprovadas com action "Aprovar" inline
+
+### Page — Painel Admin
+- [x] `TraceabilitySettings` — form para editar range_start/range_end por digit_count; exibe last_used e percentual de uso; validação de range
+
+### Correções Técnicas (Filament 4)
+- [x] `$navigationIcon` em Pages deve ser `\BackedEnum|string|null` (não `?string`)
+- [x] `$view` em Pages deve ser não-estático (`protected string $view`, não `protected static string $view`)
+- [x] Pages registradas explicitamente nos PanelProviders (não via `discoverPages`) para garantir descoberta
 
 ---
 
-## Fase 6 — Etiquetas com Estoque
-_Ainda não iniciada_
+---
+
+## Fase 6 — Etiquetas com Estoque (Concluído em 12/04/2026)
+
+### Migrations
+- [x] `tag_inventory` (tag_id, batch_code, initial_quantity, current_quantity, unit_cost, minimum_stock, received_at, notes)
+- [x] `tag_distributions` (tag_inventory_id, distributed_to→users, quantity, distributed_at, notes)
+- [x] `tag_consumptions` (tag_inventory_id, service_order_id, quantity_used, consumed_at, notes)
+
+### Models
+- [x] `TagInventory` — HasMany distributions/consumptions; helpers `totalDistributed()`, `totalConsumed()`, `isBelowMinimum()`; scopeLowStock
+- [x] `TagDistribution` — BelongsTo TagInventory, User (recipient)
+- [x] `TagConsumption` — BelongsTo TagInventory, ServiceOrder
+
+### Resources Filament (Admin) — grupo "Etiquetas"
+- [x] `TagInventoryResource` — CRUD estoque com filtro low_stock, coluna atual colorida (danger/success), RelationManager de distribuições
+- [x] `TagDistributionResource` — listagem global de distribuições com create/edit/delete; decrementa estoque automaticamente no afterCreate
+- [x] `DistributionsRelationManager` — relação inline em TagInventoryResource, decrementa estoque no after callback
+
+### Widget
+- [x] `TagStockWidget` — StatsOverviewWidget com total em estoque, count de lotes abaixo do mínimo, detalhes por lote
+
+### Correções Técnicas
+- [x] Resources Filament 4: `form()` usa `Schema $schema` + `->components([])`, não `Form $form` + `->schema([])`
+- [x] RelationManagers Filament 4: mesmo padrão Schema
+
+---
 
 ---
 

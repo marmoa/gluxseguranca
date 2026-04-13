@@ -121,7 +121,7 @@ class ServiceOrderResource extends Resource
                         fn (ServiceOrderStatus $s) => [$s->value => $s->label()]
                     )),
             ])
-            ->actions([
+            ->recordActions([
                 Action::make('start')
                     ->label('Iniciar')
                     ->icon(Heroicon::OutlinedPlay)

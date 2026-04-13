@@ -72,11 +72,11 @@ class ItemsRelationManager extends RelationManager
             ->headerActions([
                 CreateAction::make()->label('Adicionar item'),
             ])
-            ->actions([
+            ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

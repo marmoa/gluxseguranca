@@ -33,9 +33,12 @@ class CampoPanelProvider extends PanelProvider
             ])
             ->brandName('G-Lux — Campo')
             ->discoverResources(in: app_path('Filament/Campo/Resources'), for: 'App\Filament\Campo\Resources')
-            ->discoverPages(in: app_path('Filament/Campo/Pages'), for: 'App\Filament\Campo\Pages')
             ->pages([
                 Dashboard::class,
+                \App\Filament\Campo\Pages\AddItems::class,
+                \App\Filament\Campo\Pages\FillItemData::class,
+                \App\Filament\Campo\Pages\ServiceSummary::class,
+                \App\Filament\Campo\Pages\RejectedItems::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Campo/Widgets'), for: 'App\Filament\Campo\Widgets')
             ->widgets([

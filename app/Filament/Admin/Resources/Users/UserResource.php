@@ -158,13 +158,13 @@ class UserResource extends Resource
             ->filters([
                 TrashedFilter::make(),
             ])
-            ->actions([
+            ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),
                 RestoreAction::make(),
                 ForceDeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                     RestoreBulkAction::make(),

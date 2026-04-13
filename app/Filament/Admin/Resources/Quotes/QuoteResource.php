@@ -165,7 +165,7 @@ class QuoteResource extends Resource
                     ->searchable(),
                 TrashedFilter::make(),
             ])
-            ->actions([
+            ->recordActions([
                 Action::make('send')
                     ->label('Enviar')
                     ->icon(Heroicon::OutlinedPaperAirplane)
@@ -214,7 +214,7 @@ class QuoteResource extends Resource
                 RestoreAction::make(),
                 ForceDeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                     RestoreBulkAction::make(),

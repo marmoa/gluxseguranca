@@ -103,13 +103,13 @@ class ItemsRelationManager extends RelationManager
                     ->label('Adicionar item')
                     ->after(fn () => $this->getOwnerRecord()->recalculateTotal()),
             ])
-            ->actions([
+            ->recordActions([
                 EditAction::make()
                     ->after(fn () => $this->getOwnerRecord()->recalculateTotal()),
                 DeleteAction::make()
                     ->after(fn () => $this->getOwnerRecord()->recalculateTotal()),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make()
                         ->after(fn () => $this->getOwnerRecord()->recalculateTotal()),

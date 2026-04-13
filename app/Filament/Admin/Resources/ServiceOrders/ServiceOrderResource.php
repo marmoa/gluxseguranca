@@ -266,7 +266,7 @@ class ServiceOrderResource extends Resource
 
                 TrashedFilter::make(),
             ])
-            ->actions([
+            ->recordActions([
                 Action::make('start')
                     ->label('Iniciar')
                     ->icon(Heroicon::OutlinedPlay)
@@ -325,7 +325,7 @@ class ServiceOrderResource extends Resource
                 RestoreAction::make(),
                 ForceDeleteAction::make(),
             ])
-            ->bulkActions([
+            ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                     RestoreBulkAction::make(),
