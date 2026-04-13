@@ -63,7 +63,7 @@
 - [ ] Page Admin: SystemLog
 - [ ] Mail: ServiceOrderCompleted
 - [ ] Mail: QuoteSent
-- [ ] Artisan Command: migrate:legacy-data (SOMENTE dados mestres)
+- [x] ~~Artisan Command: migrate:legacy-data~~ ✅ Concluído em 13/04/2026
 - [ ] Artisan Command: validate:legacy-migration
 - [ ] Testes Feature para cada Resource
 - [ ] Testes Unit para cada Service

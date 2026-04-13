@@ -295,7 +295,19 @@ _Ainda não iniciada_
 ---
 
 ## Fase 9 — Polish e Go-Live
-_Ainda não iniciada_
+
+### Migração de Dados Mestres (Concluído em 13/04/2026)
+
+- [x] `Artisan Command: migrate:legacy-data` — migra dados mestres do banco legado `glux_hom` para o novo sistema
+  - Opção `--fresh` para limpeza destrutiva antes da importação
+  - Migra: padrões (6), etiquetas (4), normas (29), atributos (38) + 382 valores, itens (174) + pivôs (978 atributos, 2951 valores default, 166 normas)
+  - Mapeamento de cidades: 5.564 cidades via UF + nome
+  - Clientes (238): trata filiais com mesmo CNPJ (armazena `null` em cnpj para duplicatas)
+  - Contratos (7), equipamentos (3)
+  - Usuários (266): usa `login` como chave única; e-mails duplicados recebem `{login}@legacy.import`
+  - Senhas MD5 preservadas via `LegacyMd5Hasher` (autenticação transparente)
+- [ ] Dashboard Admin com todos os widgets
+- [ ] Dashboard Campo personalizado por técnico
 
 ---
 
