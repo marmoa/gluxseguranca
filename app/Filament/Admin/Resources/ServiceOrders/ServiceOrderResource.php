@@ -16,7 +16,6 @@ use App\Models\ServiceOrder;
 use App\Models\State;
 use App\Models\User;
 use App\Services\ServiceOrderLifecycleService;
-use App\Services\ServiceOrderNumberService;
 use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
@@ -354,11 +353,4 @@ class ServiceOrderResource extends Resource
             ->withoutGlobalScopes([SoftDeletingScope::class]);
     }
 
-    /** Gera número da OS antes de criar. */
-    public static function mutateFormDataBeforeCreate(array $data): array
-    {
-        $data['number'] = app(ServiceOrderNumberService::class)->generate();
-
-        return $data;
-    }
 }
